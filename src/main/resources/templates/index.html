@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <table class="table">
+      <tr align="center">
+          <td>ID</td>
+          <td>用户名</td>
+          <td>密码</td>
+          <td>操作</td>
+      </tr>
+      <tr align="center" th:each="stu:${list}">
+          <td th:text="${stu.id}"></td>
+          <td th:text="${stu.name}"></td>
+          <td th:text="${stu.password}"></td>
+          <td>
+              <a th:href="@{/toinsert}"><span class="glyphicon glyphicon-user"></span></a>
+              <!-- result风格 -->
+              <a th:href="@{/delete/}+${stu.id}"><span class="glyphicon glyphicon-trash"></span></a>
+              <!--<a th:href="@{/delete/(id=${stu.id})}"><span class="glyphicon glyphicon-trash"></span></a>-->
+              <a th:href="@{/selectAllByid/}+${stu.id}"><span class="glyphicon glyphicon-edit"></span></a>
+          </td>
+      </tr>
+  </table>
+</body>
+</html>
